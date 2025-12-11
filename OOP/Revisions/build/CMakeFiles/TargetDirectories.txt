@@ -1,3 +1,0 @@
-/home/salaheddineghamri/Documents/playground/Python-vs-Cpp/OOP/Revisions/build/CMakeFiles/rebuild_cache.dir
-/home/salaheddineghamri/Documents/playground/Python-vs-Cpp/OOP/Revisions/build/CMakeFiles/testapp.dir
-/home/salaheddineghamri/Documents/playground/Python-vs-Cpp/OOP/Revisions/build/CMakeFiles/edit_cache.dir

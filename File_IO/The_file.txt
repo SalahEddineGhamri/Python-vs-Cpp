@@ -1,5 +1,0 @@
-Read this text, and get the following number:
-18
-give it's multiplcation with the following number:
-5
-here:

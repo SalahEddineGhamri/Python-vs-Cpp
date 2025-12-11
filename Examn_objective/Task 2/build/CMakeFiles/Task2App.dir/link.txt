@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/Task2App.dir/main.cpp.o CMakeFiles/Task2App.dir/Myfunctions.cpp.o  -o Task2App 

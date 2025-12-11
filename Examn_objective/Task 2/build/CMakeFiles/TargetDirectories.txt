@@ -1,3 +1,0 @@
-/home/salaheddineghamri/Documents/Examn_objective/Task 2/build/CMakeFiles/rebuild_cache.dir
-/home/salaheddineghamri/Documents/Examn_objective/Task 2/build/CMakeFiles/Task2App.dir
-/home/salaheddineghamri/Documents/Examn_objective/Task 2/build/CMakeFiles/edit_cache.dir
