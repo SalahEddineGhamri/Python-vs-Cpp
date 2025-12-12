@@ -1,4 +1,4 @@
-# Python-vs-Cpp
+# Python-vs-Cpp-vs-Rust
 
 A repo I use as revision basis of c++ and python.
 
@@ -234,4 +234,5 @@ Write examples for:
 * Static analysis demonstration (clang-tidy)
 * Benchmarks using `<chrono>` high_resolution_clock
 
-# python roadmap
+# Python roadmap
+# Rust roadmap
