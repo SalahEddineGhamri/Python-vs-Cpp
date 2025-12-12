@@ -38,8 +38,8 @@ advanced features supassing defaults versions will be in dedicated folders.
 * [x] `inline` function demo
 * [x] Function overloading (matching rules)
 * [x] Default arguments
-* [ ] Variadic template function (`template<typename... Args>`)
-* [ ] Lambda expressions: captures (by value, by ref, mixed), mutable lambda
+* [x] Variadic template function (`template<typename... Args>`)
+* [x] Lambda expressions: captures (by value, by ref, mixed), mutable lambda
 
 ---
 
