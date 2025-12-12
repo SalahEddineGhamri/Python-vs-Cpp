@@ -25,7 +25,7 @@ advanced features supassing defaults versions will be in dedicated folders.
 
 * [X] `if / else` examples covering nested + chained
 * [X] `switch` with enum + default branch
-* [ ] All loop types: `for`, `while`, `do while`
+* [X] All loop types: `for`, `while`, `do while`
 * [ ] Range-based for loop over arrays, vectors, initializer_list
 * [ ] Early return, `continue`, `break`
 
