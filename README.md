@@ -23,8 +23,8 @@ advanced features supassing defaults versions will be in dedicated folders.
 
 ## **2. Control Flow**
 
-* [ ] `if / else` examples covering nested + chained
-* [ ] `switch` with enum + default branch
+* [X] `if / else` examples covering nested + chained
+* [X] `switch` with enum + default branch
 * [ ] All loop types: `for`, `while`, `do while`
 * [ ] Range-based for loop over arrays, vectors, initializer_list
 * [ ] Early return, `continue`, `break`
