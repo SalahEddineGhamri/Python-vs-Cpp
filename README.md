@@ -54,7 +54,7 @@ advanced features supassing defaults versions will be in dedicated folders.
 
 ## **5. Essential Memory & Pointers**
 
-* [ ] Pointer basics: address printing, dereferencing, pointer arithmetic
+* [X] Pointer basics: address printing, dereferencing, pointer arithmetic
 * [ ] Double pointer (`T**`) example
 * [ ] `new` / `delete`
 * [ ] `new[]` / `delete[]`
