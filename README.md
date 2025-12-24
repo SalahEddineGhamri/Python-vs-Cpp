@@ -71,11 +71,11 @@ advanced features supassing defaults versions will be in dedicated folders.
 
 * [x] Class with constructor, destructor
 * [x] Overloaded constructors
-* [ ] `explicit` constructor and why it matters
+* [x] `explicit` constructor and why it matters
 * [x] Copy constructor + copy assignment operator
 * [x] Move constructor + move assignment operator
-* [ ] Virtual methods + overriding
-* [ ] Abstract class + pure virtual function
+* [x] Virtual methods + overriding
+* [x] Abstract class + pure virtual function
 * [ ] Inheritance example (Vehicle → Car)
 * [ ] `final` class and `override` keyword
 * [ ] Rule of 3, 5, 0 examples
@@ -137,28 +137,28 @@ For each container:
 
 Write examples for:
 
-* `std::sort`, custom comparator
-* `std::stable_sort`
-* `std::find`, `std::find_if`
-* `std::all_of`, `std::any_of`, `std::none_of`
-* `std::transform`
-* `std::accumulate`
-* `std::copy`, `std::copy_if`
-* `std::for_each`
-* `std::remove_if` + erase idiom
-* `std::binary_search`
+* [ ] `std::sort`, custom comparator
+* [ ] `std::stable_sort`
+* [ ] `std::find`, `std::find_if`
+* [ ] `std::all_of`, `std::any_of`, `std::none_of`
+* [ ] `std::transform`
+* [ ] `std::accumulate`
+* [ ] `std::copy`, `std::copy_if`
+* [ ] `std::for_each`
+* [ ] `std::remove_if` + erase idiom
+* [ ] `std::binary_search`
 
 ---
 
 ## **11. File & OS Interaction**
 
-* Read text file line-by-line
-* Write file
-* Append file
-* Binary file read/write (struct serialization)
-* Implement a simple config parser
-* Read command line arguments (`int argc, char* argv[]`)
-* Parse environment variables (`std::getenv`)
+*  [ ] Read text file line-by-line
+*  [ ] Write file
+*  [ ] Append file
+*  [ ] Binary file read/write (struct serialization)
+*  [ ] Implement a simple config parser
+*  [ ] Read command line arguments (`int argc, char* argv[]`)
+*  [ ] Parse environment variables (`std::getenv`)
 
 ---
 
@@ -179,35 +179,35 @@ Write examples for:
 
 ## **13. Advanced Memory / Low-Level**
 
-* Manual memory pool allocator
-* Custom allocator for `std::vector`
-* Placement new + explicit destructor
-* Writing a small arena allocator
-* Alignment: `std::aligned_storage`, `alignas`, `alignof`
-* Memory layout exploration with `sizeof` and offsets
+* [ ] Manual memory pool allocator
+* [ ] Custom allocator for `std::vector`
+* [ ] Placement new + explicit destructor
+* [ ] Writing a small arena allocator
+* [ ] Alignment: `std::aligned_storage`, `alignas`, `alignof`
+* [ ] Memory layout exploration with `sizeof` and offsets
 
 ---
 
 ## **14. Compile-Time Programming**
 
-* constexpr math (compile-time factorial, Fibonacci)
-* constexpr array operations
-* Type traits: create custom ones + use `<type_traits>`
-* Tag dispatching example
-* Metaprogramming recursion (template recursion)
+* [ ] constexpr math (compile-time factorial, Fibonacci)
+* [ ] constexpr array operations
+* [ ] Type traits: create custom ones + use `<type_traits>`
+* [ ] Tag dispatching example
+* [ ] Metaprogramming recursion (template recursion)
 
 ---
 
 ## **15. Design Patterns (C++ implementations)**
 
-* Singleton (thread-safe C++17 version)
-* Factory Method
-* Abstract Factory
-* Strategy Pattern
-* Observer Pattern
-* Decorator
-* Builder
-* RAII pattern wrapped around a system resource (FD, file handle, mutex)
+* [ ] Singleton (thread-safe C++17 version)
+* [ ] Factory Method
+* [ ] Abstract Factory
+* [ ] Strategy Pattern
+* [ ] Observer Pattern
+* [ ] Decorator
+* [ ] Builder
+* [ ] RAII pattern wrapped around a system resource (FD, file handle, mutex)
 
 ---
 
