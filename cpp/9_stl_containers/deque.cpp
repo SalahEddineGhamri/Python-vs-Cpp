@@ -1,96 +1,176 @@
-/*
-std::deque (double-ended queue) summary:
+// std_deque_tutorial.cpp
+// A complete, self-contained tutorial and demonstration of std::deque in C++17
+// Covers: construction, push_front/push_back, emplace_front/emplace_back,
+//         pop_front/pop_back, reserve-like behavior (no direct reserve),
+//         insertion/deletion at both ends and in the middle,
+//         iteration (index, range-for, iterator), search, and custom comparator (sorting).
+//
+// Compile with: g++ -std=c++17 -Wall -Wextra -O2 std_deque_tutorial.cpp -o std_deque_tutorial
+//
+// This file builds cleanly and runs on any C++17-compliant compiler.
 
-- Storage: Non-contiguous chunks of memory; allows growth at both ends efficiently.
-- Complexity:
-    * Access by index: O(1) but slightly slower than std::vector due to non-contiguous storage.
-    * Insertion/removal at ends: O(1)
-    * Insertion/removal in middle: O(n)
-- Pros:
-    * Fast push/pop at both front and back.
-    * Random access supported.
-    * Safer than vector for frequent front insertions.
-- Cons:
-    * Slightly worse cache locality than vector.
-    * Iterators may be invalidated on insertion at either end.
-    * Middle insertions/deletions slower than vector for contiguous data.
-- Best Use Cases:
-    * Queue or deque structures where both ends are used.
-    * When frequent front insertions/removals are required.
-    * Mixed access patterns where occasional random access is needed.
-*/
-#include <deque>
 #include <iostream>
-#include <algorithm>
-#include <numeric>
+#include <deque>
+#include <algorithm>    // std::sort, std::find, std::remove
 #include <string>
 
+/*
+    std::deque (double-ended queue) is a sequence container that allows efficient
+    insertion and deletion at BOTH the beginning and the end (amortized O(1)).
+
+    Key differences from std::vector:
+    - No capacity() or reserve() — internally uses chunks of fixed-size blocks.
+    - push_front / pop_front are fast.
+    - Random access is still O(1), but slightly slower than vector due to indirection.
+    - Iterators remain valid after insertions/deletions at ends (but invalidated in middle).
+
+    Interesting fact: deque is the default underlying container for std::queue and std::stack
+    when you don't specify another one.
+
+    Pitfall: Insertion or deletion in the middle is O(n) and invalidates iterators/references
+    from the modification point onward — just like vector.
+*/
+
+struct Task {
+    std::string description;
+    int priority;  // higher number = more urgent
+
+    Task(std::string d, int p) : description(std::move(d)), priority(p) {}
+
+    friend std::ostream& operator<<(std::ostream& os, const Task& t) {
+        os << "[" << t.priority << "] " << t.description;
+        return os;
+    }
+};
+
+// Custom comparator: sort tasks by priority descending
+struct HigherPriorityFirst {
+    bool operator()(const Task& a, const Task& b) const {
+        return a.priority > b.priority;
+    }
+};
+
 int main() {
-    using namespace std;
+    /*
+        1. Basic construction
+    */
+    std::deque<int> dq;
+    std::cout << "Empty deque: size=" << dq.size() << '\n';
 
-    // --- 1. Basic creation and initialization ---
-    deque<int> d1;                          // empty deque
-    deque<int> d2{1, 2, 3};                 // initializer list
-    deque<int> d3(5, 42);                   // 5 elements, all 42
+    /*
+        2. Adding elements at both ends
+           push_back / push_front  — copy/move existing object
+           emplace_back / emplace_front — construct in-place (more efficient)
+    */
+    dq.push_back(10);
+    dq.push_back(20);
+    dq.push_front(5);
+    dq.emplace_front(1);      // constructs int directly at front
+    dq.emplace_back(30);
 
-    cout << "Initial d2: ";
-    for (auto n : d2) cout << n << ' ';
-    cout << "\n";
+    std::cout << "\nAfter pushes:\n";
+    for (const auto& v : dq) std::cout << v << ' ';
+    std::cout << '\n';
 
-    // --- 2. Insertion / Deletion ---
-    d2.push_back(4);                        // append at end
-    d2.push_front(0);                       // prepend at front
-    d2.pop_back();                           // remove last
-    d2.pop_front();                          // remove first
+    /*
+        3. Removing elements from both ends
+    */
+    dq.pop_front();           // removes 1
+    dq.pop_back();            // removes 30
 
-    cout << "After push/pop: ";
-    for (auto n : d2) cout << n << ' ';
-    cout << "\n";
+    std::cout << "\nAfter pop_front and pop_back:\n";
+    for (const auto& v : dq) std::cout << v << ' ';
+    std::cout << '\n';
 
-    // --- 3. Random access ---
-    cout << "First element: " << d2.front() << "\n";
-    cout << "Last element: " << d2.back() << "\n";
-    cout << "Element at index 1: " << d2[1] << "\n";  // no bounds check
-    // cout << d2.at(10); // would throw out_of_range
+    /*
+        4. Iteration methods — identical to vector
+    */
+    std::cout << "\nIndex-based access:\n";
+    for (std::size_t i = 0; i < dq.size(); ++i) {
+        std::cout << "dq[" << i << "] = " << dq[i] << '\n';
+    }
 
-    // --- 4. Iteration ---
-    cout << "Forward iteration: ";
-    for (auto it = d2.begin(); it != d2.end(); ++it)
-        cout << *it << ' ';
-    cout << "\n";
+    std::cout << "\nRange-based for (recommended):\n";
+    for (const auto& v : dq) std::cout << v << ' ';
+    std::cout << '\n';
 
-    cout << "Reverse iteration: ";
-    for (auto rit = d2.rbegin(); rit != d2.rend(); ++rit)
-        cout << *rit << ' ';
-    cout << "\n";
+    std::cout << "\nIterator loop:\n";
+    for (auto it = dq.begin(); it != dq.end(); ++it) {
+        std::cout << *it << ' ';
+    }
+    std::cout << '\n';
 
-    // --- 5. Algorithms ---
-    deque<int> d4{3, 1, 4, 1, 5};
-    sort(d4.begin(), d4.end());             // works like vector
-    cout << "Sorted d4: ";
-    for (auto n : d4) cout << n << ' ';
-    cout << "\n";
+    /*
+        5. Insertion in the middle — insert() is O(n)
+           Returns iterator to first inserted element
+    */
+    auto middle = dq.begin() + dq.size() / 2;
+    dq.insert(middle, 999);   // insert 999 in the approximate middle
 
-    int sum = accumulate(d4.begin(), d4.end(), 0);
-    cout << "Sum of d4: " << sum << "\n";
+    std::cout << "\nAfter inserting 999 in the middle:\n";
+    for (const auto& v : dq) std::cout << v << ' ';
+    std::cout << '\n';
 
-    // --- 6. Pitfalls ---
-    cout << "\nPitfall: Deque iterator invalidation\n";
-    auto it = d4.begin();
-    d4.push_front(0);                        // may invalidate iterators!
-    // cout << *it; // unsafe, iterator may be invalid
+    /*
+        6. Deletion — erase() single element or range
+           Trick: Use the classic remove-erase idiom for removing by value
+    */
+    // Remove all occurrences of 10
+    auto new_end = std::remove(dq.begin(), dq.end(), 10);
+    dq.erase(new_end, dq.end());
 
-    // --- 7. Best practices ---
-    // Use emplace_front/emplace_back for in-place construction
-    deque<string> ds;
-    ds.emplace_back("hello");
-    ds.emplace_front(5, '*');               // "*****"
-    cout << "Strings in deque: ";
-    for (auto& s : ds) cout << s << ' ';
-    cout << "\n";
+    std::cout << "\nAfter removing all 10s:\n";
+    for (const auto& v : dq) std::cout << v << ' ';
+    std::cout << '\n';
 
-    // --- 8. Other notes ---
-    // deque allows fast insert/remove at both ends, unlike vector
-    // Random access is slightly slower than vector (non-contiguous chunks)
-    // Useful for queue-like structures with occasional random access
+    // Erase a single element by iterator
+    if (!dq.empty()) {
+        dq.erase(dq.begin() + 1);  // remove second element
+    }
+
+    /*
+        7. Search — linear O(n) with std::find
+           For sorted data you can use binary search algorithms
+    */
+    if (std::find(dq.begin(), dq.end(), 999) != dq.end()) {
+        std::cout << "\n999 is still present.\n";
+    }
+
+    /*
+        8. Real-world example: priority task queue using deque
+    */
+    std::deque<Task> tasks;
+    tasks.emplace_back("Write report", 5);
+    tasks.emplace_front("Emergency bug fix", 10);  // high priority → front
+    tasks.emplace_back("Refactor code", 2);
+    tasks.emplace_front("Answer urgent email", 8);
+
+    std::cout << "\nTasks in arrival order:\n";
+    for (const auto& t : tasks) std::cout << t << '\n';
+
+    // Sort by priority (highest first) — O(n log n)
+    std::sort(tasks.begin(), tasks.end(), HigherPriorityFirst());
+
+    std::cout << "\nTasks sorted by priority descending:\n";
+    for (const auto& t : tasks) std::cout << t << '\n';
+
+    /*
+        9. Important pitfalls and best practices
+
+        - No reserve() or capacity() — you cannot pre-allocate like vector.
+          Deque grows automatically in chunks; growth is efficient but not controllable.
+        - Iterators are invalidated only by insertions/deletions that affect elements
+          at or before the iterator position when operating in the middle.
+        - push_front/pop_front are fast → perfect for queues, stacks, or sliding windows.
+        - Random access (dq[i]) is slightly slower than vector due to chunk indirection.
+        - shrink_to_fit() exists and requests deallocation of unused memory (non-binding).
+        - Prefer emplace_front/emplace_back over push_front/push_back when constructing objects.
+    */
+
+    std::cout << "\nFinal deque size=" << dq.size() << '\n';
+
+    // Optional: ask the implementation to release unused memory
+    dq.shrink_to_fit();
+
+    return 0;
 }

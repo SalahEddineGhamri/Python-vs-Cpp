@@ -2,7 +2,7 @@
 
 A repo I use as revision basis of c++ and python.
 
-defaults:
+target versions:
 +  c++17
 +  python3.13
 
@@ -76,10 +76,10 @@ advanced features supassing defaults versions will be in dedicated folders.
 * [x] Move constructor + move assignment operator
 * [x] Virtual methods + overriding
 * [x] Abstract class + pure virtual function
-* [ ] Inheritance example (Vehicle → Car)
-* [ ] `final` class and `override` keyword
+* [x] Inheritance example (Vehicle → Car)
+* [x] `final` class and `override` keyword
 * [ ] Rule of 3, 5, 0 examples
-* [ ] Static methods and static members
+* [x] Static methods and static members
 * [x] Operator overloading (`<<`, `==`, `<`, `[]`, `()`, arithmetic operators)
 
 ---
@@ -113,23 +113,22 @@ advanced features supassing defaults versions will be in dedicated folders.
 
 Create full examples for:
 
-* [ ] `std::vector` (push, emplace, erase, reserve)
-* [ ] `std::array`
+* [x] `std::vector` (push, emplace, erase, reserve)
 * [x] `std::deque`
+* [x] `std::stack` / `std::queue`
+* [ ] `std::map` / `std::unordered_map`
+* [ ] `std::pair`
+* [ ] `std::tuple`
 * [ ] `std::list`
 * [ ] `std::forward_list`
-* [ ] `std::map` / `std::unordered_map`
 * [ ] `std::set` / `std::unordered_set`
 * [ ] `std::priority_queue`
-* [ ] `std::stack` / `std::queue`
-* [ ] `std::tuple`
-* [ ] `std::pair`
+* [ ] `std::array`
 
 For each container:
-
-* iteration (classic, range-for, iterator)
-* insertion, deletion, search
-* custom comparator
+    * iteration (classic, range-for, iterator)
+    * insertion, deletion, search
+    * custom comparator
 
 ---
 
@@ -213,11 +212,11 @@ Write examples for:
 
 ## **16. Networking / Systems**
 
-* Basic socket client (POSIX)
-* Basic socket server
-* Write a tiny HTTP GET client
-* Parse a JSON manually (no libs)
-* Use `<filesystem>`:
+* [ ] Basic socket client (POSIX)
+* [ ] Basic socket server
+* [ ] Write a tiny HTTP GET client
+* [ ] Parse a JSON manually (no libs)
+* [ ] Use `<filesystem>`:
   * Walk directories
   * Query file size
   * Create/remove directories
@@ -231,6 +230,43 @@ Write examples for:
 * [ ] Unit testing with Catch2 or GoogleTest
 * [ ] Static analysis demonstration (clang-tidy)
 * [ ] Benchmarks using `<chrono>` high_resolution_clock
+
+## ** 18. General software patterns **
+
+### Creational Patterns
+- [ ] Factory Method
+- [ ] Abstract Factory
+- [ ] Builder
+- [ ] Singleton
+- [ ] Prototype
+
+### Structural Patterns
+- [ ] Adapter
+- [ ] Bridge
+- [ ] Composite
+- [ ] Decorator
+- [ ] Facade
+- [ ] Flyweight
+- [ ] Proxy
+
+### Behavioral Patterns
+-  [ ] Strategy
+-  [ ] Observer
+-  [ ] Command
+-  [ ] State
+-  [ ] Visitor
+-  [ ] Mediator
+-  [ ] Memento
+-  [ ] Chain of Responsibility
+
+### C++-Specific Idioms
+-  [ ] RAII (Resource Acquisition Is Initialization)
+-  [ ] Pimpl (Pointer to Implementation)
+-  [ ] Curiously Recurring Template Pattern (CRTP)
+-  [ ] Type Erasure
+-  [ ] Policy-based Design
+-  [ ] Expression Templates
+-  [ ] Self-registering Factory
 
 # Python roadmap
 # Rust roadmap
