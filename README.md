@@ -163,16 +163,16 @@ Write examples for:
 
 ## **12. Concurrency & Multithreading**
 
-* Launching threads (`std::thread`)
-* Lambda inside thread
-* Join vs detach
-* `std::mutex` + `std::lock_guard`
-* `std::unique_lock` + condition_variable
-* Producer–consumer queue
-* Thread-safe counter
-* `std::async` task
-* `std::promise` / `std::future`
-* Atomic operations with `std::atomic<int>`
+* [ ] Launching threads (`std::thread`)
+* [ ] Lambda inside thread
+* [ ] Join vs detach
+* [ ] `std::mutex` + `std::lock_guard`
+* [ ] `std::unique_lock` + condition_variable
+* [ ] Producer–consumer queue
+* [ ] Thread-safe counter
+* [ ] `std::async` task
+* [ ] `std::promise` / `std::future`
+* [ ] Atomic operations with `std::atomic<int>`
 
 ---
 
