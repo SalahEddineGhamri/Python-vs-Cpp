@@ -56,9 +56,9 @@ advanced features supassing defaults versions will be in dedicated folders.
 
 * [X] Pointer basics: address printing, dereferencing, pointer arithmetic
 * [x] Double pointer (`T**`) example
-* [ ] `new` / `delete`
-* [ ] `new[]` / `delete[]`
-* [ ] Dangling pointer example (controlled)
+* [x] `new` / `delete`
+* [x] `new[]` / `delete[]`
+* [x] Dangling pointer example (controlled)
 * [X] Smart pointers:
   * `std::unique_ptr` (create, release, reset)
   * `std::shared_ptr` (use_count)
@@ -151,10 +151,10 @@ Write examples for:
 
 ## **11. File & OS Interaction**
 
-*  [ ] Read text file line-by-line
-*  [ ] Write file
-*  [ ] Append file
-*  [ ] Binary file read/write (struct serialization)
+*  [x] Read text file line-by-line
+*  [x] Write file
+*  [x] Append file
+*  [x] Binary file read/write (struct serialization)
 *  [ ] Implement a simple config parser
 *  [ ] Read command line arguments (`int argc, char* argv[]`)
 *  [ ] Parse environment variables (`std::getenv`)

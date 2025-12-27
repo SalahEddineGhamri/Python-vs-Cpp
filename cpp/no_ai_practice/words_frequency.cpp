@@ -2,7 +2,7 @@
  * <No AI>
  * Task: we read a file that contains a text.
  *       we output the freqency of words
- */
+*/
 
 #include <algorithm>
 #include <vector>
@@ -29,7 +29,7 @@ std::string read_file(const std::string& path) {
     // openning the file
     std::ifstream file(path, std::ios::binary);
     if (!file)
-        throw std::runtime_error("cannot open file");
+        throw std::runtime_error("cannot open the file");
 
     file.seekg(0, std::ios::end);
     std::string data;
